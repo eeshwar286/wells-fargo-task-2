@@ -28,6 +28,9 @@ public class Advisor {
     @Column(nullable = false)
     private String email;
 
+    @OneToMany(mappedBy = "advisor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Client> clients;
+
     protected Advisor() {
 
     }
@@ -82,5 +85,13 @@ public class Advisor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
     }
 }
